@@ -5,7 +5,7 @@ def login_zhihu():
     info, session = lg.zhihu()
     print(info, session)
     for cookie in session.cookies:
-            
+        print(cookie)  
     return 
 
 login_zhihu()
