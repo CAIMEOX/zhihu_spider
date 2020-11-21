@@ -1,5 +1,5 @@
 from PyQt4 import QtCore, QtGui, uic
-import sys, docx #, threading 多线程
+import sys #, threading 多线程
 
 form_class = uic.loadUiType('GUI.ui')[0]
 
