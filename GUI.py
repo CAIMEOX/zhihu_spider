@@ -1,6 +1,7 @@
 from PyQt5 import uic, QtWidgets
-import sys
 import main
+import sys  # , threading 多线程
+
 form_class = uic.loadUiType('GUI.ui')[0]
 
 
@@ -8,7 +9,7 @@ class ZhiHuGui(QtWidgets.QMainWindow, form_class):
     def __init__(self, parent=None):
         super().__init__()
         self.setWindowTitle("ZhiHu Spider")
-        self.setWindowOpacity(0.5)
+        # self.setWindowOpacity(0.5)
         self.show()
         # QtWidgets.QMainWindow.__init__(self, parent)
         self.setupUi(self)
@@ -28,7 +29,7 @@ class ZhiHuGui(QtWidgets.QMainWindow, form_class):
 
     def save_file(self, content):
         file_path = QtWidgets.QFileDialog.getSaveFileName(self, "Save file", "savefile",
-                                                      "docx files (*.docx);;pdf files (*.pdf);;txt files (*.txt);;all files(*.*)")
+                                                          "docx files (*.docx);;pdf files (*.pdf);;txt files (*.txt);;all files(*.*)")
         if '.txt' in file_path:
             pass
         elif '.docx' in file_path:
