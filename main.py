@@ -1,8 +1,11 @@
 import re
 import json
 import requests
+import urllib3
 from bs4 import BeautifulSoup
 import pdfkit
+
+urllib3.disable_warnings()
 
 
 class Question:
@@ -92,9 +95,9 @@ class Question:
         r = requests.get(self.url, headers=headers, verify=False)
         self.soup = BeautifulSoup(r.content, 'lxml')
 
-
-q = Question('https://www.zhihu.com/question/21217244', None)
-# print(q.get_detail())
-print(q.get_question())
-print(q.get_tag())
-print(q.get_answer(1))
+# Test
+# q = Question('https://www.zhihu.com/question/21217244', None)
+# # print(q.get_detail())
+# print(q.get_question())
+# print(q.get_tag())
+# print(q.get_answer(1))
