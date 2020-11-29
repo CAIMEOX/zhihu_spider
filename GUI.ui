@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ZhiHu Spider</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="Save_File_Button">
@@ -78,6 +78,9 @@
     </property>
     <property name="text">
      <string>确认</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
