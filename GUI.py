@@ -21,7 +21,7 @@ class ZhiHuGui(QtWidgets.QMainWindow, form_class):
         # self.line = QtWidgets.QLineEdit(self)
         self.pushButton.clicked.connect(self.submit_uri)
 
-        # self.exut_action.triggered.connect(self.exit)
+        self.exit_action.triggered.connect(self.exit)
 
     def check_event(self):
         '部分状态运行监测'
