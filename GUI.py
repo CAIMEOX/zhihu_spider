@@ -1,5 +1,5 @@
 from PyQt5 import uic, QtWidgets
-import main
+import spider
 import sys, threading
 
 form_class = uic.loadUiType('GUI.ui')[0]
@@ -39,14 +39,21 @@ class ZhiHuGui(QtWidgets.QMainWindow, form_class):
     def submit_uri(self):
         print(self.UrlInput.text())
         try:
-            question = main.Question(self.UrlInput.text(), None)
-            print('Question:', question.get_question())
+            self.question = spider.Question(self.UrlInput.text())
+            self.Save_File_Button.setEnabled(True)
+            print('Question:', self.question.get_title())
+            print('Please choose the answer you want to download:')
+            ids = self.question.get_answer_ids()
+            print('\n'.join(list(ids)))
         except:
             QtWidgets.QMessageBox.warning(self, '错误的网址！！！', '请检查网址的正确性！', QtWidgets.QMessageBox.Ok, QtWidgets.QMessageBox.Ok)
 
     def save_file(self, content):
         file_path = QtWidgets.QFileDialog.getSaveFileName(self, "Save file", "savefile",
                                                           "docx files (*.docx);;pdf files (*.pdf);;txt files (*.txt);;all files(*.*)")
+
+
+        self.question.save_to_pdf(file_path)
         if '.txt' in file_path:
             pass
         elif '.docx' in file_path:
