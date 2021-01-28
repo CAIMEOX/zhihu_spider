@@ -25,7 +25,8 @@ class Question:
         else:
             self.contents = {}
             self.url = url
-            self.id = url[len(url) - 8:]
+            #self.id = url[len(url) - 8:]
+            self.id = re.compile(r"(http|https)://www.zhihu.com/question/(\S+)").match(url).group(2)
             self.start_requests()
 
     def start_requests(self):
@@ -78,8 +79,11 @@ class Column:
             self.parse()
 
     def parse(self):
-        url = "https://www.zhihu.com/api/v4/columns/" + self.slug + "/articles"
+        url = "https://www.zhihu.com/api/v4/columns/" + self.slug
+        r = requests.get(url, headers=get_header()).json()
+        self.title = r['title']
         curr = 0
+        url += "/articles"
         while 1:
             r = requests.get(url, headers=get_header())
             j = r.json()
@@ -92,6 +96,9 @@ class Column:
                 break
 
             url = j['paging']['next']
+
+    def get_title(self):
+        return self.title
 
     def get_titles(self):
         return self.contents.keys()
