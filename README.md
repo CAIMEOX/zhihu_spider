@@ -1,26 +1,39 @@
 # Zhihu Spider
-A web spider catching zhihu answer and saving as PDF or Markdown file.
 
-## Aim
+A web spider catching zhihu answer and saving as PDF file.
 
-This is a python practicing project which I will implement a simple web spider in python. (for my homework.) Sometime I browse zhihu and find something valuable. I want to save it as a pdf of markdown file so that I can read it offline in my Kindle. That is what this project does.
+Sometimes I browse zhihu and always find something valuable. I want to save it as a pdf of markdown file so that I can read it offline in my Kindle. That is what this project does.
 
-## Design (Diagram)
+## Installation
 
-### Programming Language 
+Pdfkit is required to wkhtmltopdf, so you need to download and install [wkhtmltopdf](https://wkhtmltopdf.org/).
 
-**Web scraping** is the process of gathering information from the Internet. Many advanced and highly evolved web scraping libraries make python such a popular and the best (probably) programming language for web scraping.
+### Linux 
 
-```mermaid
-graph TD
-A[Start] --> R(Read cookie)
-R-->L{Login?}
-L --> |Yes| P[/URI/]
-L --> |No| C[/Login/]
-C --> S(Save cookie)
-S --> P
-P --> D(Processing) --> E(Save to file) --> F[End]
+```shell
+git clone https://github.com/CAIMEOX/zhihu_spider.git
+cd zhihu_spider
+pip install -r requirements.txt
+python GUI.py
 ```
 
-## Introduction 
+## Usage
 
+The spider can catch the following three types of articles:
+
+- column
+
+  Download the column articles and save them as pdf file.
+
+- question
+
+  Download the entire answers of a question and save them. 
+
+- answers
+
+  Download a single answer.
+
+## Contributors
+
+- [CAIMEO](https://github.com/300Little-fish) : Spider
+- [300Little-fish](https://github.com/300Little-fish) : GUI
